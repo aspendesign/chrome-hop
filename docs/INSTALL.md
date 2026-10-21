@@ -35,11 +35,26 @@ download. See [platform support](../README.md#supported-platforms).
 
 ## What the prompts mean
 
-Firefox requests only `activeTab` (the tab you click) and `nativeMessaging`
-(talk to the installed helper). Mozilla also displays **browsing activity**
+Firefox uses `activeTab` (the tab you click), `nativeMessaging` (talk to the
+installed helper), and `menus` (the toolbar’s right-click option). Mozilla also displays **browsing activity**
 in its data disclosure because the selected URL leaves Firefox for a local
 program. That handoff happens only when you click. Chrome Hop sends no data
 to a developer server and has no telemetry.
+
+## Open the current tab or all tabs
+
+- **Left-click once:** opens just the current tab in Chrome immediately.
+- **Right-click → Open all tabs in this window:** opens the window’s HTTP(S)
+  tabs in their Firefox order. Settings, extension pages, files and unsafe
+  addresses are skipped. Other Firefox windows are untouched. Firefox tabs stay open.
+
+The first bulk action asks for the optional **tabs** permission to read the
+other addresses. Decline it to keep using single-tab opening. Firefox may call
+this permission “Access browsing history”; Chrome Hop does not use the history
+API or monitor your browsing. It reads current-window addresses only when you
+choose the menu item. You can revoke the optional permission in Add-ons Manager.
+If a helper error interrupts a batch, the tooltip reports how many opened;
+retrying the whole batch can open those pages again.
 
 Chrome loads the selected URL normally, using its own profile, cookies and
 settings. URLs may include private query strings or access tokens. Chrome

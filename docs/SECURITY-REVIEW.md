@@ -13,12 +13,25 @@ untrusted. Trust Firefox’s user-gesture permission enforcement, Windows’ kno
 folder APIs, the installed Chrome executable at standard paths, and reviewed
 source/tooling obtained through official TLS endpoints and pinned hashes.
 
-The only page-to-native path is a Firefox toolbar click. `activeTab` supplies
-that clicked tab’s URL. There is no content script, page message listener,
-external-message listener, tab scan, persistent website access or injection.
+The page-to-native paths are explicit Firefox toolbar gestures. A left-click
+uses `activeTab` for that clicked tab’s URL and requests no extra access. The
+toolbar-only `menus` context adds **Open all tabs in this window** in 1.1.0.
+That handler synchronously requests optional `tabs` permission, and only after
+approval queries the clicked tab’s exact `windowId`. The grant persists in
+Firefox until revoked, but this implementation performs no background polling
+or tab queries outside that handler. There is no content script, page message
+listener, external-message listener, persistent website access or injection.
 The extension validates HTTP(S), rejects dangerous schemes/controls/credentials,
 and sends exactly `{op: "open", url: "…"}` to one fixed native host. Error UI
 uses predefined codes and text; raw URLs and native error strings are not shown.
+
+Bulk handoff snapshots supported tabs in tab order and sends sequential,
+unchanged one-URL messages. It shares the single-action busy guard, so another
+bulk or left-click cannot create overlapping native launches. Errors stop the
+remaining batch and report counts without URLs. Already-opened Chrome tabs
+are not rolled back; retrying a batch can create duplicates. Unsupported URLs
+are skipped before native messaging. Optional permission denial or revocation
+does not fall back to host permissions or disable normal single-tab opening.
 
 The native manifest permits only `chrome-hop@aspendesign.github.io`. Firefox
 passes the initiating ID as a command-line argument; the host checks it again.

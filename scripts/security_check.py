@@ -10,15 +10,20 @@ def check():
     def need(condition,message):
         if not condition:failures.append(message)
     manifest=json.loads((ROOT/'extension/manifest.json').read_text(encoding='utf-8'))
-    need(manifest['permissions']==['activeTab','nativeMessaging'],'Permission budget changed')
-    for field in ['content_scripts','optional_permissions','host_permissions','optional_host_permissions','externally_connectable','web_accessible_resources','commands','update_url']:
+    need(manifest['permissions']==['activeTab','nativeMessaging','menus'],'Permission budget changed')
+    need(manifest.get('optional_permissions')==['tabs'],'Bulk-only optional permission changed')
+    for field in ['content_scripts','host_permissions','optional_host_permissions','externally_connectable','web_accessible_resources','commands','update_url']:
         need(field not in manifest,'Unexpected manifest capability: '+field)
     need(manifest['browser_specific_settings']['gecko']['id']=='chrome-hop@aspendesign.github.io','ID mismatch')
     need(manifest['browser_specific_settings']['gecko']['data_collection_permissions']=={'required':['browsingActivity']},'Local URL transfer disclosure missing')
     for path in (ROOT/'extension').glob('*.js'):
         text=path.read_text(encoding='utf-8')
-        for pattern in [r'\beval\s*\(',r'new\s+Function\s*\(',r'\bfetch\s*\(',r'XMLHttpRequest',r'WebSocket',r'executeScript',r'console\.',r'\.onMessage',r'\.onConnect',r'\.tabs\.query']:
+        for pattern in [r'\beval\s*\(',r'new\s+Function\s*\(',r'\bfetch\s*\(',r'XMLHttpRequest',r'WebSocket',r'executeScript',r'console\.',r'\.onMessage',r'\.onConnect']:
             need(not re.search(pattern,text),f'Unexpected browser surface: {path.name}: {pattern}')
+    background=(ROOT/'extension/background.js').read_text(encoding='utf-8')
+    need(background.count('browser.tabs.query(')==1 and 'browser.tabs.query({windowId: tab.windowId})' in background,'Bulk window boundary changed')
+    need('browser.permissions.request({permissions: ["tabs"]})' in background,'Bulk permission gesture missing')
+    need('contexts: ["action"]' in background,'Menu escaped the toolbar context')
     native='\n'.join(p.read_text() for p in (ROOT/'internal').rglob('*.go') if not p.name.endswith('_test.go'))
     need('exec.Command(path, raw)' in native,'Direct fixed argument launch missing')
     need('CreationFlags: 0x08000000' in native,'Console suppression missing')

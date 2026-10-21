@@ -13,6 +13,8 @@ import sys
 import time
 import urllib.error
 import urllib.request
+import threading
+from http.server import BaseHTTPRequestHandler,ThreadingHTTPServer
 
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
 from run import ROOT
@@ -24,7 +26,7 @@ OUT.mkdir(parents=True,exist_ok=True)
 def main():
     sock=socket.socket();sock.bind(('127.0.0.1',0));port=sock.getsockname()[1];sock.close()
     base=f'http://127.0.0.1:{port}'
-    service=None;session=None;log=(OUT/'geckodriver.log').open('w')
+    service=None;session=None;server=None;log=(OUT/'geckodriver.log').open('w')
     report={'version':VERSION,'success':False,'profile':'disposable','checks':[]}
     def api(method,path,data=None):
         req=urllib.request.Request(base+path,data=json.dumps(data).encode() if data is not None else None,method=method,headers={'Content-Type':'application/json'})
@@ -97,6 +99,55 @@ def main():
         until(lambda:js('return location.hash')=='#unsupported')
         assert js('return document.querySelector("#page-help").hidden') is False
         report['checks'].append('actual_toolbar_reuses_help_tab_and_updates_message')
+        if '--bulk' in sys.argv:
+            hits=[]
+            class Handler(BaseHTTPRequestHandler):
+                def log_message(self,*args):pass
+                def do_GET(self):
+                    if 'Chrome/' in self.headers.get('User-Agent','') and self.path.startswith('/test-'):
+                        hits.append(self.path)
+                    self.send_response(200);self.send_header('Content-Type','text/html');self.end_headers()
+                    self.wfile.write(b'<!doctype html><title>Chrome Hop bulk verification</title><h1>Harmless local Chrome Hop test</h1>')
+            server=ThreadingHTTPServer(('127.0.0.1',0),Handler)
+            threading.Thread(target=server.serve_forever,daemon=True).start()
+            host=f'http://127.0.0.1:{server.server_address[1]}'
+            originals={}
+            for path in ['/test-a','/test-b']:
+                handle=cmd('/window/new',{'type':'tab'})['handle'];cmd('/window',{'handle':handle});cmd('/url',{'url':host+path});originals[handle]=host+path
+            active=handle
+            other=cmd('/window/new',{'type':'window'})['handle'];cmd('/window',{'handle':other});cmd('/url',{'url':host+'/test-other-window'})
+            cmd('/window',{'handle':active})
+            toolbar()
+            until(lambda:hits.count('/test-b')==1)
+            report['checks'].append('left_click_still_opens_only_current_tab_in_real_chrome')
+            time.sleep(.3);hits.clear()
+            cmd('/moz/context',{'context':'chrome'})
+            widget='chrome-hop_aspendesign_github_io-browser-action'
+            element=cmd('/element',{'using':'css selector','value':'#'+widget+' .webextension-browser-action'})
+            cmd('/actions',{'actions':[{'type':'pointer','id':'menu-mouse','parameters':{'pointerType':'mouse'},'actions':[{'type':'pointerMove','duration':0,'origin':element,'x':0,'y':0},{'type':'pointerDown','button':2},{'type':'pointerUp','button':2}]}]})
+            selector='menuitem[label="Open all tabs in this window"]'
+            until(lambda:js('return Array.from(document.querySelectorAll(arguments[0])).some(n=>n.getBoundingClientRect().width>0)',selector))
+            report['checks'].append('real_toolbar_right_click_menu_visible')
+            item=cmd('/element',{'using':'css selector','value':selector})
+            cmd('/element/'+item['element-6066-11e4-a52e-4f735466cecf']+'/click',{})
+            time.sleep(.2)
+            notification=js('return Array.from(document.querySelectorAll("popupnotification")).filter(n=>n.getBoundingClientRect().width>0).map(n=>({id:n.id,label:n.getAttribute("label"),buttons:Array.from(n.querySelectorAll("button")).map(b=>({class:b.className,label:b.getAttribute("label"),text:b.textContent}))}))')
+            report['permission_ui']=notification
+            print('Permission UI:',json.dumps(notification),flush=True)
+            if notification:
+                assert not hits,'Bulk launched before permission approval'
+                # Native popup controls have no interactable rectangle in headless
+                # Firefox. Invoke the actual prompt's primary control via chrome
+                # DOM; do not grant permissions through a test-only extension API.
+                js('document.getElementById(arguments[0]).button.click()',notification[0]['id'])
+                report['checks'].append('real_optional_permission_prompt_approved_via_chrome_DOM_in_headless_test_profile')
+            until(lambda:hits.count('/test-a')==1 and hits.count('/test-b')==1,30)
+            time.sleep(.5);assert hits==['/test-a','/test-b'],hits
+            cmd('/moz/context',{'context':'content'})
+            for handle,url in originals.items():
+                cmd('/window',{'handle':handle});assert js('return location.href')==url
+            report['checks'].append('bulk_opens_window_web_tabs_once_in_order_skips_other_window_and_keeps_firefox_tabs')
+            report['bulk_chrome_requests']=hits
         report['success']=True
     finally:
         if session:
@@ -105,6 +156,7 @@ def main():
         if service:
             try:service.wait(timeout=10)
             except subprocess.TimeoutExpired:service.terminate();service.wait(timeout=5)
+        if server:server.shutdown();server.server_close()
         log.close();(OUT/'receipt.json').write_text(json.dumps(report,indent=2)+'\n')
     print(json.dumps(report,indent=2))
 

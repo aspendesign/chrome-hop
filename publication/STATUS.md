@@ -1,5 +1,14 @@
 # Publication status
 
+## 1.1.0 toolbar menu improvement
+
+Version 1.1.0 includes direct downloads and adds **Open all tabs in this window**
+to the toolbar’s right-click menu. Left-click still opens only the current tab.
+`menus` is required for the context menu, and `tabs` is optional and requested
+only for that explicit bulk action. Native helper code/security is unchanged.
+Local unit and real Firefox/Chrome verification passed; tagged release and
+Mozilla submission details will be recorded here after completion.
+
 ## 1.0.1 setup improvement
 
 Version 1.0.1 adds direct installer downloads, a separate GitHub button,

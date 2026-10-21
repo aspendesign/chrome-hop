@@ -1,0 +1,27 @@
+{
+  "version": "1.1.0",
+  "success": true,
+  "profile": "disposable",
+  "checks": [
+    "first_install_direct_download_and_separate_github",
+    "hashchange_regression_in_actual_firefox",
+    "narrow_layout_without_horizontal_overflow",
+    "actual_toolbar_reuses_help_tab_and_updates_message",
+    "left_click_still_opens_only_current_tab_in_real_chrome",
+    "real_toolbar_right_click_menu_visible",
+    "real_optional_permission_prompt_approved_via_chrome_DOM_in_headless_test_profile",
+    "bulk_opens_window_web_tabs_once_in_order_skips_other_window_and_keeps_firefox_tabs"
+  ],
+  "firefox_version": "159.0",
+  "permission_ui": [
+    {
+      "buttons": [],
+      "id": "addon-webext-permissions-notification",
+      "label": ""
+    }
+  ],
+  "bulk_chrome_requests": [
+    "/test-a",
+    "/test-b"
+  ]
+}

@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.1.0 — 2026-10-21
+
+- Keep immediate one-click opening of the current tab.
+- Add toolbar right-click **Open all tabs in this window**. Web tabs open in
+  order; unsupported pages are skipped and Firefox tabs stay open.
+- Request optional `tabs` permission only for the explicit bulk action. Add
+  the `menus` permission for the toolbar menu; no host permissions or scripts.
+- Serialize native launches and report counts; stop on a helper failure.
+- Include the simpler direct-download setup from 1.0.1.
+
 ## 1.0.1 — 2026-10-21
 
 - Direct **Download for Windows** button on the setup page, with a separate

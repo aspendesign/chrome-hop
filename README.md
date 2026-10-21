@@ -5,6 +5,9 @@
 Chrome Hop is a small Firefox toolbar extension for Windows 11. Click the
 button and the current web address opens in Google Chrome. Your Firefox tab
 stays open. No preferences to configure, website scripts, tracking or services.
+Left-click opens the current tab immediately. Right-click the toolbar button
+and choose **Open all tabs in this window** to send the window’s web tabs to
+Chrome, in order. Unsupported pages are skipped and Firefox tabs stay open.
 
 **[↓ Download for Windows](https://github.com/aspendesign/chrome-hop/releases/latest/download/ChromeHop-Setup-windows-x64.exe)**
 · **[View releases on GitHub](https://github.com/aspendesign/chrome-hop/releases/latest)**
@@ -48,13 +51,18 @@ paths and other Chromium browsers are outside version 1’s supported scope.
 
 | Component | What it can do |
 | --- | --- |
-| Firefox add-on | Read the tab URL you click using `activeTab`; send one native message using `nativeMessaging` |
+| Firefox add-on | Left-click: read the clicked tab with `activeTab`; right-click: optionally read this window’s tab addresses; send one validated URL per native message |
 | Native helper | Validate one HTTP(S) URL and launch a fixed installed Chrome executable with that URL as one argument |
 | Windows installer | Install under your local application directory, register one Firefox host under HKCU, and provide uninstall |
 
-Those are the add-on’s **only two API permissions**. It has no host permissions,
-content scripts, cookies/history access, tab scanning, shell execution, network
-client, downloaded runtime, telemetry, background service or automatic routing.
+The add-on requires `activeTab`, `nativeMessaging` and `menus` for the toolbar
+context menu. **`tabs` is optional** and requested only when you choose **Open
+all tabs**. Declining it leaves normal one-click use working. After granting
+it, Firefox remembers the permission; you can revoke it in Add-ons Manager.
+The add-on reads the selected window’s tab addresses only on that explicit
+menu action. It has no host permissions, content scripts, cookies/history
+API, shell execution, network client, telemetry, background service, background
+tab monitoring or automatic routing.
 
 Mozilla additionally requires the `browsingActivity` **data disclosure** because
 the selected address is passed to a program outside Firefox. That transfer

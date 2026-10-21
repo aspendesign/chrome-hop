@@ -1,10 +1,11 @@
 {
   "manifest_version": 3,
   "name": "Chrome Hop — Open in Chrome",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Open the current Firefox tab in Google Chrome with one click. Windows helper required. No tracking or website scripts.",
   "homepage_url": "https://github.com/aspendesign/chrome-hop",
-  "permissions": ["activeTab", "nativeMessaging"],
+  "permissions": ["activeTab", "nativeMessaging", "menus"],
+  "optional_permissions": ["tabs"],
   "background": {"scripts": ["background.js"]},
   "action": {
     "default_title": "Open this tab in Chrome",

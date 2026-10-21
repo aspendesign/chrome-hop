@@ -44,6 +44,22 @@ launch; the test makes no claim to verify that remote page’s completed load.
 Chrome receives those URLs in its normal profile because production deliberately
 has no test-only profile flags. Existing tabs/profile data are not inspected.
 
+The setup/menu checks also preserve any existing helper registration:
+
+```powershell
+python tests/setup_firefox.py
+python tests/setup_firefox.py --bulk
+python tests/setup_firefox.py --download
+```
+
+`--bulk` requires an installed real helper and opens harmless loopback test
+pages in actual Chrome. It uses a disposable Firefox profile, clicks the actual
+toolbar/menu, and approves the actual Firefox optional-permission prompt through
+its chrome-DOM primary control because headless native popup controls have no
+WebDriver-interactable rectangle. It does not grant permission through an
+extension test API. `--download` is run after publication and compares the
+actual Firefox-button download with the production installer.
+
 ## Reproducibility
 
 The helper is built with `CGO_ENABLED=0`, `GOAMD64=v1`, `-trimpath`,
