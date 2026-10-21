@@ -1,0 +1,9 @@
+node_modules/
+.tools/
+.local/
+dist/
+coverage.out
+*.test.exe
+*.log
+output/
+__pycache__/

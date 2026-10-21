@@ -1,0 +1,22 @@
+Chrome Hop — a local handoff, one click at a time.
+
+This installer adds a small, standalone helper for your Windows account.
+Install the Chrome Hop Firefox add-on from Mozilla Add-ons separately.
+
+Chrome Hop sends only the web address of the tab you click to this helper
+and then to your installed Google Chrome. This can include query strings
+and access tokens in that address. Only send a page you want Chrome to open.
+Chrome loads it normally using its own cookies, profile, history and settings.
+Firefox sessions, passwords, cookies, and page content are not transferred.
+
+Chrome Hop makes no network requests itself. It has no telemetry, account,
+background service, updater, or downloaded runtime. It does not change your
+default browser. The source is public at github.com/aspendesign/chrome-hop.
+
+Google Chrome Stable must be installed in its normal Windows location.
+Custom browser executable paths, Chrome Beta/Canary and other Chromium
+browsers are intentionally not supported. Windows 11 x64 is supported.
+
+Run this installer again to repair or upgrade. To remove the helper, use
+Windows Settings > Apps > Installed apps > Chrome Hop Windows Helper.
+Remove the Firefox add-on separately in Firefox's Add-ons Manager.

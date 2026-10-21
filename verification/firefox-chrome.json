@@ -1,0 +1,29 @@
+{
+  "success": true,
+  "firefox_profile": "disposable geckodriver profile",
+  "chrome_profile": "normal installed Chrome profile; harmless localhost + example.com only",
+  "checks": [
+    "missing_helper_actionable_page",
+    "localhost_exactly_once_in_real_chrome_firefox_kept",
+    "https_example_com_production_launch_acknowledged"
+  ],
+  "firefox_version": "159.0",
+  "initial_widget_badge": "",
+  "toolbar_badge": "\u2713",
+  "firefox_original_still_open": true,
+  "test_requests": [
+    {
+      "path": "/handoff?case=missing",
+      "browser": "Firefox"
+    },
+    {
+      "path": "/handoff?case=localhost&one=1%26two%3D2",
+      "browser": "Firefox"
+    },
+    {
+      "path": "/handoff?case=localhost&one=1%26two%3D2",
+      "browser": "Chrome"
+    }
+  ],
+  "host_registration_removed": true
+}

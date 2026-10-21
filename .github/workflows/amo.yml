@@ -1,0 +1,42 @@
+name: Submit listed Firefox add-on
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Existing release tag (for example v1.0.0)'
+        required: true
+permissions:
+  contents: read
+jobs:
+  submit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    # Configure this environment with required reviewers before saving AMO keys.
+    environment: mozilla-production
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: '24.15.0'
+      - name: Validate release and download exact submission
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ inputs.tag }}
+        run: |
+          python scripts/download_amo.py
+          npm ci --ignore-scripts --no-fund --no-audit
+      - name: Submit for PUBLIC listed review
+        env:
+          WEB_EXT_API_KEY: ${{ secrets.AMO_API_KEY }}
+          WEB_EXT_API_SECRET: ${{ secrets.AMO_API_SECRET }}
+        run: |
+          test -n "$WEB_EXT_API_KEY" && test -n "$WEB_EXT_API_SECRET"
+          node node_modules/web-ext/bin/web-ext.js sign --source-dir .local/amo-extension --channel listed --amo-metadata publication/amo-metadata.json --artifacts-dir .local/amo-results --no-config-discovery
+      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        if: always()
+        with:
+          name: mozilla-submission-result
+          path: .local/amo-results/*
+          if-no-files-found: ignore

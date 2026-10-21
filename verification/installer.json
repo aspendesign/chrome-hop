@@ -1,0 +1,14 @@
+{
+  "elevated": false,
+  "installation_mode": "per-user",
+  "phases": [
+    "install",
+    "repair",
+    "upgrade_fixture_1.0.1",
+    "uninstall",
+    "reinstall",
+    "final_uninstall"
+  ],
+  "native_binary_rejections": true,
+  "success": true
+}

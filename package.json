@@ -1,0 +1,9 @@
+{
+  "name": "chrome-hop",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Build-time tooling only. No JavaScript runtime dependencies ship in Chrome Hop.",
+  "license": "MIT",
+  "scripts": {"test": "node --test --test-isolation=none tests/*.test.cjs", "lint:extension": "web-ext lint --source-dir extension --no-config-discovery --warnings-as-errors"},
+  "devDependencies": {"web-ext": "10.8.0"}
+}
