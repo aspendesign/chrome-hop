@@ -7,6 +7,8 @@
     "localhost_exactly_once_in_real_chrome_firefox_kept",
     "https_example_com_production_launch_acknowledged"
   ],
+  "helper_sha256": "297cb739fff6c72e03e95bb7bc4eead65ad2d04acc9b48f709c8007be8642c95",
+  "extension_sha256": "e4d9e258df0d224ea40b86300cb8f79d43acc3dbfd9041c470fa46405de5b5c3",
   "firefox_version": "159.0",
   "initial_widget_badge": "",
   "toolbar_badge": "\u2713",
