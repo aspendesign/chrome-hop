@@ -1,4 +1,18 @@
-# Publication status — 1.0.0
+# Publication status
+
+## 1.0.1 setup improvement
+
+Version 1.0.1 adds direct installer downloads, a separate GitHub button,
+first-install guidance, platform availability and correct help-tab updates.
+The Windows helper security boundary and two API permissions are unchanged.
+The [download link](https://github.com/aspendesign/chrome-hop/releases/latest/download/ChromeHop-Setup-windows-x64.exe)
+uses a stable Setup filename; its bytes match the versioned installer and it
+is included in checksums and build attestations.
+
+The update is prepared and locally tested. Its tagged public release and AMO
+update submission will be recorded here after their actual completion.
+
+## 1.0.0 verified release and initial submission
 
 Verified October 20, 2026 (America/Chicago). Mozilla’s dashboard uses October 21
 for this submission’s UTC date. Submission, approval, signing and public

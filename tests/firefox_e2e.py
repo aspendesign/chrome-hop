@@ -87,8 +87,11 @@ def main():
         value=api('POST','/session',{'capabilities':{'alwaysMatch':{'browserName':'firefox','moz:firefoxOptions':{'binary':r'C:\Program Files\Firefox Developer Edition\firefox.exe','args':['-headless','-no-remote'],'prefs':{'browser.shell.checkDefaultBrowser':False,'browser.startup.page':0}}}}})
         session=value['sessionId'];report['firefox_version']=value['capabilities']['browserVersion']
         cmd('/window/rect',{'width':1400,'height':1100})
+        initial=cmd('/window',method='GET')
         addon=cmd('/moz/addon/install',{'path':str(ROOT/f'dist/chrome-hop-{VERSION}-amo-submission.zip'),'temporary':True})
         assert addon==ID
+        until(lambda:len(cmd('/window/handles',method='GET'))>=2)
+        cmd('/window',{'handle':initial})
         # Missing host: genuine action click; should open packaged guidance.
         url=f'http://127.0.0.1:{server.server_address[1]}/handoff?case=missing'
         cmd('/url',{'url':url})
@@ -98,8 +101,8 @@ def main():
         context('chrome')
         report['initial_widget_badge']=js("return document.querySelector('#chrome-hop_aspendesign_github_io-browser-action .toolbarbutton-badge')?.textContent")
         context('content')
-        handles=until(lambda: cmd('/window/handles',method='GET') if len(cmd('/window/handles',method='GET'))>len(before) else None)
-        help_handle=next(h for h in handles if h not in before)
+        handles=until(lambda:cmd('/window/handles',method='GET') if len(cmd('/window/handles',method='GET'))>=2 else None)
+        help_handle=next(h for h in handles if h!=original)
         cmd('/window',{'handle':help_handle})
         until(lambda: js('return location.hash')=='#helper')
         screenshot=cmd('/screenshot',method='GET');(OUT/'setup-help.png').write_bytes(base64.b64decode(screenshot))

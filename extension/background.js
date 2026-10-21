@@ -8,6 +8,11 @@
   let lastOpened = 0;
   let helpTab;
 
+  browser.runtime.onInstalled.addListener(async details => {
+    if (details.reason !== "install") return;
+    try { helpTab = (await browser.tabs.create({url: browser.runtime.getURL("help.html") + "#setup"})).id; } catch {}
+  });
+
   function validURL(raw) {
     if (typeof raw !== "string" || new TextEncoder().encode(raw).length > MAX_URL ||
         /[\u0000-\u0020\u007f-\u009f\\"\s]/u.test(raw) || /%(?:0[0-9a-f]|1[0-9a-f]|7f)/i.test(raw)) return false;
@@ -24,7 +29,13 @@
     await browser.action.setTitle({title: "Chrome Hop needs attention — click to retry", tabId});
     const url = browser.runtime.getURL("help.html") + "#" + code;
     if (helpTab !== undefined) {
-      try { await browser.tabs.update(helpTab, {url, active: true}); return; } catch { helpTab = undefined; }
+      try {
+        const existing = await browser.tabs.get(helpTab);
+        if (existing.url?.startsWith(browser.runtime.getURL("help.html") + "#")) {
+          await browser.tabs.update(helpTab, {url, active: true}); return;
+        }
+      } catch {}
+      helpTab = undefined;
     }
     helpTab = (await browser.tabs.create({url})).id;
   }

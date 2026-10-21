@@ -57,6 +57,8 @@ def main():
     first=installer.read_bytes()
     run([iscc,'/Qp','/DAppVersion='+VERSION,ROOT/'installer/chrome-hop.iss'])
     installer_reproducible=first==installer.read_bytes()
+    # Stable filename supports a permanent, direct latest-release download link.
+    shutil.copyfile(installer,DIST/'ChromeHop-Setup-windows-x64.exe')
     metadata={'version':VERSION,'go':'1.27.3','web-ext':'10.8.0','inno':'7.1.0',
       'extension_id':'chrome-hop@aspendesign.github.io','host':'io.github.aspendesign.chrome_hop',
       'helper_reproducible':True,'extension_reproducible':True,

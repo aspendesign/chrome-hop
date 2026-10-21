@@ -11,7 +11,7 @@ def step(args,**kwargs):
 if '--release' in sys.argv:step([sys.executable,ROOT/'scripts/check_tag.py'])
 step([sys.executable,ROOT/'scripts/bootstrap.py'],timeout=600)
 step([sys.executable,ROOT/'scripts/npm.py','ci','--ignore-scripts','--no-fund','--no-audit'],timeout=600)
-step(['node','--test','--test-isolation=none',ROOT/'tests/extension.test.cjs'])
+step(['node','--test','--test-isolation=none',ROOT/'tests/extension.test.cjs',ROOT/'tests/help.test.cjs'])
 step(['node',ROOT/'node_modules/web-ext/bin/web-ext.js','lint','--source-dir',ROOT/'extension','--no-config-discovery','--warnings-as-errors'])
 step([sys.executable,ROOT/'scripts/security_check.py'])
 go=ROOT/'.tools/go/bin/go.exe'

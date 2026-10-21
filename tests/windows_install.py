@@ -51,6 +51,7 @@ def main():
         raise SystemExit('An existing install/registration or prior test directory is present; refusing to overwrite it.')
     TARGET.parent.mkdir(parents=True,exist_ok=True)
     setup=ROOT/f'dist/ChromeHop-Setup-{VERSION}-windows-x64.exe'
+    assert setup.read_bytes()==(ROOT/'dist/ChromeHop-Setup-windows-x64.exe').read_bytes(), 'Direct-download installer differs'
     results={'elevated':bool(ctypes.windll.shell32.IsUserAnAdmin()),'installation_mode':'per-user','phases':[]}
     try:
         for phase in ['install','repair']:

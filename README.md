@@ -6,8 +6,9 @@ Chrome Hop is a small Firefox toolbar extension for Windows 11. Click the
 button and the current web address opens in Google Chrome. Your Firefox tab
 stays open. No preferences to configure, website scripts, tracking or services.
 
-**[Download the Windows helper](https://github.com/aspendesign/chrome-hop/releases/latest)**
-· **[Installation](docs/INSTALL.md)** · **[Privacy](docs/PRIVACY.md)** · **[Troubleshooting](docs/TROUBLESHOOTING.md)**
+**[↓ Download for Windows](https://github.com/aspendesign/chrome-hop/releases/latest/download/ChromeHop-Setup-windows-x64.exe)**
+· **[View releases on GitHub](https://github.com/aspendesign/chrome-hop/releases/latest)**
+· **[Installation](docs/INSTALL.md)** · **[Privacy](docs/PRIVACY.md)**
 
 > **Firefox distribution status, verified October 20, 2026:** version **1.0.0**
 > was submitted for **public/listed** Mozilla distribution and is **Awaiting Review**.
@@ -20,14 +21,28 @@ stays open. No preferences to configure, website scripts, tracking or services.
 
 1. Install **Chrome Hop — Open in Chrome** from Mozilla Add-ons when the listed
    version is available.
-2. Run `ChromeHop-Setup-1.0.0-windows-x64.exe` from this repository’s release.
+2. Click **[Download for Windows](https://github.com/aspendesign/chrome-hop/releases/latest/download/ChromeHop-Setup-windows-x64.exe)**.
+   Open the downloaded **ChromeHop-Setup-windows-x64.exe** and follow the installer.
    It installs just for you, with no administrator access or runtime downloads.
 3. Pin Chrome Hop to Firefox’s toolbar, open a web page, and click the icon.
 
-Requires Windows 11 x64, Firefox 142 or later, and Google Chrome **Stable** in
-its normal installation directory. HTTP, HTTPS and localhost are supported.
-macOS, Linux, ARM64-native helpers, custom Chrome paths and other Chromium
-browsers are outside version 1’s supported scope.
+The add-on’s setup screen has the same direct download and a separate **View on
+GitHub** button for source, release details and checksums. No terminal commands
+or developer tools are needed. Firefox downloads the installer; you open it once
+to approve the local installation.
+
+## Supported platforms
+
+| Platform | Availability |
+| --- | --- |
+| Windows 11 x64 | Ready: use the direct installer above |
+| macOS | Helper not available yet |
+| Linux | Helper not available yet |
+| Windows ARM64 / 32-bit | No tested native helper yet |
+
+Requires Firefox 142 or later and Google Chrome **Stable** in its normal
+installation directory. HTTP, HTTPS and localhost are supported. Custom Chrome
+paths and other Chromium browsers are outside version 1’s supported scope.
 
 ## A deliberately small boundary
 

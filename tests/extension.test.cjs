@@ -7,13 +7,14 @@ const root = path.resolve(__dirname,'..');
 const source = fs.readFileSync(path.join(root,'extension/background.js'),'utf8');
 
 function harness(native = async()=>({ok:true,code:'opened'})) {
-  let handler;
+  let handler,installed;
   const calls={native:[],created:[],updated:[],badges:[],titles:[]};
   let now = 10000;
   const action={onClicked:{addListener(fn){handler=fn}},async setBadgeText(v){calls.badges.push(v)},async setBadgeBackgroundColor(){},async setTitle(v){calls.titles.push(v)}};
-  const browser={action,runtime:{getURL:p=>'moz-extension://fixture/'+p,async sendNativeMessage(host,message){calls.native.push({host,message});return native(message)}},tabs:{async create(v){calls.created.push(v);return {id:99}},async update(id,v){calls.updated.push({id,...v})}}};
+  let helpURL;
+  const browser={action,runtime:{onInstalled:{addListener(fn){installed=fn}},getURL:p=>'moz-extension://fixture/'+p,async sendNativeMessage(host,message){calls.native.push({host,message});return native(message)}},tabs:{async create(v){calls.created.push(v);helpURL=v.url;return {id:99}},async get(){return {id:99,url:helpURL}},async update(id,v){calls.updated.push({id,...v});helpURL=v.url}}};
   vm.runInNewContext(source,{browser,URL,TextEncoder,Date:{now:()=>now}});
-  return {calls,click:(url,id=3)=>handler({id,url}),advance:()=>now+=1001};
+  return {calls,installed:reason=>installed({reason}),navigateHelp:url=>helpURL=url,click:(url,id=3)=>handler({id,url}),advance:()=>now+=1001};
 }
 
 test('manifest has precisely the two approved permissions and no website access',()=>{
@@ -51,4 +52,18 @@ test('missing helper gives repair instructions and reuses its own help tab',asyn
 test('no native call at startup, website listeners, injection, telemetry or shell',()=>{
   const h=harness();assert.equal(h.calls.native.length,0);
   for(const forbidden of [/\.onMessage/,/\.onConnect/,/fetch\s*\(/,/XMLHttpRequest/,/executeScript/,/\.tabs\.query/,/eval\s*\(/,/console\./])assert.doesNotMatch(source,forbidden);
+});
+
+test('first install opens local setup; updates and browser upgrades stay quiet',async()=>{
+  const h=harness(); await h.installed('update'); await h.installed('browser_update');
+  assert.equal(h.calls.created.length,0); await h.installed('install');
+  assert.deepEqual(h.calls.created.map(v=>v.url),['moz-extension://fixture/help.html#setup']);
+  assert.equal(h.calls.native.length,0);
+});
+
+test('a former help tab navigated to a website is preserved',async()=>{
+  const h=harness(async()=>{throw Error('missing')});await h.installed('install');
+  h.navigateHelp('https://example.com/');await h.click('https://example.com/');
+  assert.equal(h.calls.updated.length,0);assert.equal(h.calls.created.length,2);
+  assert.match(h.calls.created[1].url,/#helper$/);
 });

@@ -1,13 +1,45 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Chrome Hop · A little help</title><link rel="stylesheet" href="help.css"><script src="help.js" defer></script></head>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Chrome Hop · Setup & help</title><link rel="stylesheet" href="help.css"><script src="help.js" defer></script></head>
 <body><main>
   <div class="brand"><img src="icons/hop-96.png" width="48" height="48" alt=""><span>CHROME HOP</span></div>
   <p class="eyebrow">ONE CLICK. YOUR TAB IN CHROME.</p>
-  <h1 id="heading">One small setup.<br>Then you’re ready to hop.</h1>
-  <p id="detail" class="lead">Chrome Hop needs its Windows helper to open Google Chrome.</p>
-  <ol><li><span>1</span><div><strong>Install the Windows helper</strong><p>Download <b>ChromeHop-Setup</b> from the official release. Run it once. No administrator access needed.</p></div></li><li><span>2</span><div><strong>Return to your Firefox tab</strong><p>Open a web page and click the Chrome Hop toolbar button. Your Firefox tab stays right where it is.</p></div></li></ol>
-  <a class="button" href="https://github.com/aspendesign/chrome-hop/releases/latest" target="_blank" rel="noopener noreferrer">Get the Windows helper <span aria-hidden="true">↗</span></a>
-  <p class="fine">Windows 11 · Google Chrome Stable · Firefox 142 or later</p>
-  <footer><span>No tracking. No website scripts. Just a local handoff.</span><a href="https://github.com/aspendesign/chrome-hop/blob/main/docs/TROUBLESHOOTING.md" target="_blank" rel="noopener noreferrer">Troubleshooting</a></footer>
+  <h1 id="heading">One quick install.<br>Then you’re ready to hop.</h1>
+  <p id="detail" class="lead">Install the small Chrome Hop helper once so Firefox can open your pages in Google Chrome.</p>
+  <section id="windows-setup" aria-label="Install Chrome Hop for Windows">
+    <div class="actions">
+      <a id="download" class="button" href="https://github.com/aspendesign/chrome-hop/releases/latest/download/ChromeHop-Setup-windows-x64.exe">Download for Windows <span aria-hidden="true">↓</span></a>
+      <a class="button secondary" href="https://github.com/aspendesign/chrome-hop/releases/latest" target="_blank" rel="noopener noreferrer">View on GitHub <span aria-hidden="true">↗</span></a>
+    </div>
+    <p class="fine">Free · Windows 11 x64 · No administrator access needed</p>
+    <ol>
+      <li><span>1</span><div><strong>Download</strong><p>Click <b>Download for Windows</b> above. The installer downloads directly.</p></div></li>
+      <li><span>2</span><div><strong>Open the downloaded file</strong><p>Open Firefox’s downloads menu, choose <b>ChromeHop-Setup-windows-x64.exe</b>, and follow the installer.</p></div></li>
+      <li><span>3</span><div><strong>You’re ready</strong><p>Return to any web page in Firefox and click the Chrome Hop toolbar button. Your Firefox tab stays open.</p></div></li>
+    </ol>
+  </section>
+  <section id="platform-note" class="notice" hidden aria-label="Platform availability">
+    <strong>Windows helper available</strong>
+    <p>Chrome Hop currently supports Windows 11 x64. A macOS or Linux helper is not available yet.</p>
+    <a href="https://github.com/aspendesign/chrome-hop#supported-platforms" target="_blank" rel="noopener noreferrer">See platform support on GitHub ↗</a>
+  </section>
+  <section id="page-help" hidden aria-label="Open a supported page">
+    <a class="button" href="https://example.com/" rel="noreferrer">Try on a web page <span aria-hidden="true">↗</span></a>
+    <p class="fine">Open the example page, then click Chrome Hop in your toolbar.</p>
+  </section>
+  <section id="chrome-help" hidden aria-label="Install Google Chrome">
+    <a class="button" href="https://www.google.com/chrome/" target="_blank" rel="noopener noreferrer">Get Google Chrome <span aria-hidden="true">↗</span></a>
+    <p class="fine">Choose Google Chrome Stable, then return to Firefox and try Chrome Hop again.</p>
+  </section>
+  <details>
+    <summary>Other ways to install & common questions</summary>
+    <p><b>Already installed?</b> Run the Windows installer again to repair the connection. Firefox and Chrome can stay open.</p>
+    <p><b>Prefer GitHub?</b> <a href="https://github.com/aspendesign/chrome-hop/releases/latest" target="_blank" rel="noopener noreferrer">Open the release page</a> and choose <b>ChromeHop-Setup-windows-x64.exe</b>. The versioned Setup file is the same installer. The standalone helper and source ZIPs are for developers.</p>
+    <p><b>macOS, Linux, or Windows ARM?</b> There is no tested helper for these platforms yet. The Windows installer is for Windows 11 x64.</p>
+    <p><b>Why open an installer?</b> Firefox can download the helper, but installing a local program needs your approval. This is a one-time step.</p>
+    <p><b>Windows warning?</b> The installer is unsigned. Check the publisher’s source and checksums on GitHub. If your device blocks it, follow your device administrator’s rules.</p>
+    <p><b>Requirements:</b> Firefox 142 or later and Google Chrome Stable in its normal Windows installation location.</p>
+    <p><a href="https://github.com/aspendesign/chrome-hop/blob/main/docs/INSTALL.md" target="_blank" rel="noopener noreferrer">Full installation guide</a> · <a href="https://github.com/aspendesign/chrome-hop/blob/main/docs/TROUBLESHOOTING.md" target="_blank" rel="noopener noreferrer">Troubleshooting</a></p>
+  </details>
+  <footer><span>No tracking. No website scripts. Just a local handoff.</span><a href="https://github.com/aspendesign/chrome-hop" target="_blank" rel="noopener noreferrer">Source code ↗</a></footer>
 </main></body></html>

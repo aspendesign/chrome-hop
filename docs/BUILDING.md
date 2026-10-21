@@ -15,7 +15,7 @@ No tool is downloaded or executed by the product installer.
 ```powershell
 python scripts/bootstrap.py
 python scripts/npm.py ci --ignore-scripts --no-fund --no-audit
-python scripts/run.py node.exe --test --test-isolation=none tests/extension.test.cjs
+python scripts/run.py node.exe --test --test-isolation=none tests/extension.test.cjs tests/help.test.cjs
 python scripts/run.py node.exe node_modules/web-ext/bin/web-ext.js lint --source-dir extension --no-config-discovery --warnings-as-errors
 python scripts/security_check.py
 python scripts/run.py .tools/go/bin/go.exe test ./cmd/... ./internal/... -cover
@@ -59,6 +59,10 @@ matched the ASUS builds byte for byte.
 `dist/` contains the versioned installer, standalone helper, unsigned AMO
 submission ZIP, `BUILD-INFO.json`, submission assets and `SHA256SUMS.txt`.
 The standalone helper does not register itself; ordinary users need the installer.
+The additional **ChromeHop-Setup-windows-x64.exe** is an exact copy of the versioned
+installer. It is covered by checksums and release attestations and gives the
+setup screen a permanent `/releases/latest/download/` URL without a GitHub asset
+picker or extra download permission.
 
 Checksums provide integrity, not a purchased publisher identity certificate.
 No release checksum signature is claimed unless an independently verifiable
