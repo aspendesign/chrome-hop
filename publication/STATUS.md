@@ -16,19 +16,44 @@ ASUS-tested builds byte for byte. GitHub attestations for the Setup alias and
 checksum file were verified. Actual Firefox clicked the packaged Download
 button and downloaded the exact public installer.
 
-**Mozilla 1.1.0: uploaded and validated, final submission unfinished.**
-The listed update reached version **6602520**, with **0 errors / 0 warnings**.
-Browser control disconnected on the Describe Version step before the release
-notes/reviewer notes were entered or **Submit Version** was clicked. This is
-a validated draft, not a completed submission or a public signed add-on.
-The original 1.0.0 submission remains awaiting review; no 1.0.1 Mozilla version
-was submitted. [Finish the draft](https://addons.mozilla.org/en-US/developers/addon/chrome-hop-open-in-chrome/versions/submit/6602520/details)
-with the text in [FINISH-1.1.0.md](FINISH-1.1.0.md). No API credentials were
-created/exported; the protected optional API workflow has no configured AMO secrets.
+**Mozilla 1.1.0: submission completed October 21, 2026; Awaiting Review.**
+The public/listed submission is version **6602520**, file **5146641**, with
+**0 errors / 0 warnings**. The final submission and source-upload steps completed;
+Mozilla displayed **Version Submitted**. Release notes, detailed reviewer notes,
+MIT license and Firefox 142+ compatibility are saved. The listing summary,
+description, privacy policy and two screenshot captions were reopened and
+verified. The setup screenshot now shows separate Download for Windows and
+View on GitHub buttons. No software was installed during this submission run.
+
+The complete tagged source archive was downloaded back from Mozilla and is
+byte-identical to the upload (SHA-256
+`b3151c4053f7f9512f6c8ad6f2793de69bcfe89734d9e3e89b422dfd6cf55929`).
+Mozilla's stored extension has all nine non-manifest files byte-identical to
+the released ZIP, a semantically identical manifest, and no signature files yet.
+Mozilla changed manifest formatting/ZIP packaging and added a directory entry;
+the stored ZIP hashes to
+`b59355ebb537d5276fdb27a767aabaff3fc10c2451811935527752e7a9ecc647`.
+
+[Manage the submitted version](https://addons.mozilla.org/en-US/developers/addon/chrome-hop-open-in-chrome/versions/6602520)
+or [view current status](https://addons.mozilla.org/en-US/developers/addon/chrome-hop-open-in-chrome/versions)
+using the owner's Mozilla account. **Mozilla review, signing and public availability
+remain external gates**; a completed submission does not mean public installation
+is available. The anonymous add-on API returned 401 at verification. The older
+1.0.0 row now reads **Disabled by Mozilla**; its retrieved review history showed
+source/notes changes and no explanatory review decision. No reason is inferred,
+and no older version was disabled or deleted by this submission run. No separate
+1.0.1 Mozilla version was submitted.
+
+[Submission record and saved notes](FINISH-1.1.0.md).
+No API credentials were created/exported; the protected optional API workflow
+has no configured AMO secrets. No account or MFA action is currently required.
 
 Evidence: [browser tests](../verification/BULK-1.1.0.md),
 [release hashes](../verification/release-1.1.0.json),
-[actual button download](../verification/download-1.1.0.json).
+[actual button download](../verification/download-1.1.0.json),
+[Mozilla receipt](../verification/amo-1.1.0.json),
+[Version Submitted capture](../verification/amo-1.1.0-submitted.jpg),
+[Awaiting Review capture](../verification/amo-1.1.0-awaiting-review.jpg).
 
 ## 1.0.1 setup improvement
 
@@ -44,7 +69,10 @@ was published by [the passing workflow](https://github.com/aspendesign/chrome-ho
 It is superseded by 1.1.0 above. Its Mozilla upload was replaced with 1.1.0
 before creating a version, so no separate 1.0.1 AMO submission is claimed.
 
-## 1.0.0 verified release and initial submission
+## 1.0.0 verified release and initial submission (historical)
+
+This section records the initial submission state. Current version/status is
+1.1.0 above; the 1.0.0 row is now Disabled by Mozilla.
 
 Verified October 20, 2026 (America/Chicago). Mozilla’s dashboard uses October 21
 for this submission’s UTC date. Submission, approval, signing and public

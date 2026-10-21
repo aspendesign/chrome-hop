@@ -29,8 +29,11 @@ The public 1.1.0 release passed Windows CI, installer lifecycle tests, Go tests,
 vet/fuzzing, vulnerability checks, reproducibility and provenance verification.
 All seven public asset hashes passed. After publication, the actual Firefox
 setup button downloaded the exact released Setup executable; see the
-[download receipt](download-1.1.0.json). The Mozilla upload passed validation
-but browser control disconnected before its final submission. See
-[publication status](../publication/STATUS.md) for that remaining step.
+[download receipt](download-1.1.0.json). Mozilla's final public/listed submission
+completed on October 21, 2026, including reviewer source and saved listing updates.
+Version 6602520 is **Awaiting Review**, with **0 errors / 0 warnings**. See the
+[Mozilla receipt](amo-1.1.0.json) and [publication status](../publication/STATUS.md).
+No additional browser integration tests or software installations were performed
+during that submission-only run; the test results above describe the release run.
 
 ![Actual packaged setup page](setup-1.1.0.png)

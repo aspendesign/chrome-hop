@@ -19,9 +19,13 @@
   "stable_latest_download_verified": true,
   "installer_and_checksum_attestations_verified": true,
   "amo_version_id": 6602520,
-  "amo_status": "validated draft; final submission interrupted by browser-tool connection loss",
+  "amo_status": "Awaiting Review; public/listed submission completed",
   "amo_validation": {
     "errors": 0,
     "warnings": 0
-  }
+  },
+  "amo_submission_completed": true,
+  "amo_file_id": 5146641,
+  "amo_source_sha256": "b3151c4053f7f9512f6c8ad6f2793de69bcfe89734d9e3e89b422dfd6cf55929",
+  "amo_receipt": "amo-1.1.0.json"
 }

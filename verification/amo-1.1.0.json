@@ -1,0 +1,61 @@
+{
+  "version": "1.1.0",
+  "verified_at_utc": "2026-10-21T19:04:41+00:00",
+  "addon_id": 3102983,
+  "extension_id": "chrome-hop@aspendesign.github.io",
+  "version_id": 6602520,
+  "file_id": 5146641,
+  "distribution": "listed",
+  "listing_visibility": "Visible",
+  "submission_completed": true,
+  "finish_page_confirmation": "Version Submitted",
+  "status": "Awaiting Review",
+  "validation": {
+    "errors": 0,
+    "warnings": 0
+  },
+  "status_url": "https://addons.mozilla.org/en-US/developers/addon/chrome-hop-open-in-chrome/versions",
+  "version_url": "https://addons.mozilla.org/en-US/developers/addon/chrome-hop-open-in-chrome/versions/6602520",
+  "validation_url": "https://addons.mozilla.org/en-US/developers/addon/chrome-hop-open-in-chrome/file/5146641/validation",
+  "saved": {
+    "release_notes": true,
+    "reviewer_notes": true,
+    "full_tagged_source": true,
+    "MIT_license": true,
+    "firefox_min_version": "142.0",
+    "summary": true,
+    "description": true,
+    "privacy_policy": true,
+    "screenshots": 2,
+    "setup_screenshot": "setup-1.1.0.png",
+    "setup_caption": "Quick setup: Download for Windows starts the installer download directly. View on GitHub opens the source, release details and checksums separately."
+  },
+  "release_extension_sha256": "c395ca64b13179d9f91d95997e0bbb1d01dbdeb9227efbc101900d8252c70e3d",
+  "amo_stored_extension_sha256": "b59355ebb537d5276fdb27a767aabaff3fc10c2451811935527752e7a9ecc647",
+  "extension_comparison": {
+    "file_names_equal_ignoring_directory_entries": true,
+    "non_manifest_files_byte_identical": 9,
+    "manifest_semantically_equal": true,
+    "mozilla_signature_files": [],
+    "packaging_difference": "Mozilla reformatted manifest JSON, changed ZIP packaging, and added an icons directory entry."
+  },
+  "source_sha256": "b3151c4053f7f9512f6c8ad6f2793de69bcfe89734d9e3e89b422dfd6cf55929",
+  "source_downloaded_back_byte_identical": true,
+  "anonymous_addon_api_http": 401,
+  "public_signed_xpi_available": false,
+  "older_version": {
+    "version": "1.0.0",
+    "id": 6602368,
+    "dashboard_status": "Disabled by Mozilla",
+    "review_history_read": "Source upload and reviewer-note changes; no explanatory review decision retrieved. No reason inferred.",
+    "disabled_or_deleted_by_this_run": false
+  },
+  "software_installed_this_submission_run": false,
+  "new_integration_test_run": false,
+  "release_test_record": "BULK-1.1.0.md",
+  "remaining_external_gate": "Mozilla review, signing and public publication",
+  "screenshots": [
+    "amo-1.1.0-submitted.jpg",
+    "amo-1.1.0-awaiting-review.jpg"
+  ]
+}

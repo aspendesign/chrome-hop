@@ -1,6 +1,6 @@
 # Chrome Hop privacy policy
 
-Effective October 20, 2026. Applies to the Firefox add-on and Windows helper.
+Effective October 21, 2026. Applies to the Firefox add-on and Windows helper.
 
 **Clicking Chrome Hop sends the current tab’s HTTP(S) address to the Chrome
 Hop helper on your computer, which passes it to your installed Google Chrome.**

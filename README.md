@@ -14,9 +14,10 @@ Chrome, in order. Unsupported pages are skipped and Firefox tabs stay open.
 · **[Installation](docs/INSTALL.md)** · **[Privacy](docs/PRIVACY.md)**
 
 > **Distribution status, verified October 21, 2026:** **1.1.0 is public on GitHub**.
-> Mozilla’s 1.1.0 upload passed validation but still needs its final submission
-> click; the initial 1.0.0 submission is awaiting review. A public signed Firefox
-> XPI remains pending. The submission ZIP is a reviewer/development artifact.
+> **Mozilla 1.1.0 is fully submitted for public/listed distribution and Awaiting
+> Review**, with 0 errors and 0 warnings. Source, reviewer notes, privacy policy
+> and listing screenshots are saved. Mozilla approval/signing and a public Firefox
+> XPI remain pending. The submission ZIP is a reviewer/development artifact.
 > See [publication status](publication/STATUS.md).
 
 ## Get started

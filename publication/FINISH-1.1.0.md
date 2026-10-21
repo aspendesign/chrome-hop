@@ -1,13 +1,21 @@
-# Finish the validated Mozilla 1.1.0 draft
+# Mozilla 1.1.0 submission completed
 
-The public GitHub release and every automated check passed. The AMO listed
-update uploaded and validated with zero errors/warnings as version 6602520.
-Browser control disconnected before the final Describe Version form could
-be filled/submitted. Do not upload another duplicate version.
+Completed October 21, 2026 through the existing authenticated Developer Hub.
+The final **Submit Version** and source-upload steps completed, and Mozilla
+displayed **Version Submitted**. Version **6602520**, file **5146641**, is
+**Awaiting Review** for public/listed distribution, with **0 errors / 0 warnings**.
+The source archive was downloaded back and matched the upload byte for byte.
+Listing details, the privacy policy and updated setup screenshot/caption are saved.
 
-Open the existing [Describe Version form](https://addons.mozilla.org/en-US/developers/addon/chrome-hop-open-in-chrome/versions/submit/6602520/details),
-paste the following two fields, then click **Submit Version**. Confirm the
-resulting dashboard status. Approval/signing are later Mozilla decisions.
+[Current status](https://addons.mozilla.org/en-US/developers/addon/chrome-hop-open-in-chrome/versions)
+requires the owner's Mozilla account. Mozilla review/signing and public
+availability remain pending. Do not create a duplicate submission. No software
+was installed on the owner's PC during this submission run.
+
+Evidence: [submission receipt](../verification/amo-1.1.0.json),
+[Version Submitted](../verification/amo-1.1.0-submitted.jpg),
+[Awaiting Review](../verification/amo-1.1.0-awaiting-review.jpg).
+The following text is saved on the submitted version.
 
 ## Release Notes
 
