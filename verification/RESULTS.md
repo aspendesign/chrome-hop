@@ -1,7 +1,8 @@
 # Verification results — 1.0.0
 
 Tested on ASUS Windows 11 on October 20, 2026. These are actual local runs.
-GitHub CI/release evidence is recorded separately once those runs finish.
+The [tagged GitHub release workflow](https://github.com/aspendesign/chrome-hop/actions/runs/39539792041)
+also passed on a fresh hosted Windows runner, with signed build provenance.
 
 | Check | Result |
 | --- | --- |
@@ -25,7 +26,27 @@ GitHub CI/release evidence is recorded separately once those runs finish.
 | HTTPS example.com handoff | Production launch acknowledged; remote page completion not asserted |
 | Missing-helper case | Actual click opened packaged actionable help |
 | Native registration after tests | Removed; test helper uninstalled |
-| Native console show/foreground observation | Zero events during 20.05-second successful browser test; hidden WinEvent control received |
+| Native console show/foreground observation | Zero events during final 19.03-second successful browser test; hidden WinEvent control received |
+
+The public release was downloaded anonymously. All six files were accessible;
+each checksum-manifest entry matched. The installer, standalone helper and
+submission ZIP also matched the ASUS-tested copies byte for byte. GitHub’s
+`gh attestation verify` validated the installer and `SHA256SUMS.txt`; the signed
+statement covers all six files and binds the tag to source commit
+`ab80f2c10da90f34ffa86d431ee0ed462f5bb886`. See [release.json](release.json).
+
+Mozilla public/listed submission completed as version ID **6602368**, file ID
+**5146489**, with 0 errors/warnings. The complete source archive, original icon,
+two actual screenshots/captions, MIT license and privacy/reviewer/version notes
+were saved and checked. Final status: **Awaiting Review**; no approved public
+signed XPI is claimed. [Actual status capture](amo-awaiting-review.png).
+
+The actual AMO-stored submission was downloaded through the authenticated
+version page and compared with the tested package. All nine non-manifest files
+are byte-identical; the manifest JSON has identical values, permissions and ID.
+Mozilla reserialized the manifest and recompressed the ZIP, so its archive hash
+is different: `af31d35c9a8a1cdcdad57cbf5535faf85420a7aba46723409db1e3ee471e00dd`.
+No Mozilla signature files are present yet. This is not claimed to be a signed XPI.
 
 The browser test used Mozilla geckodriver 0.37.1 and loopback-only temporary
 WebDriver/fixture endpoints. Firefox’s personal profiles and existing tabs

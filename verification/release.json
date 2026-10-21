@@ -1,0 +1,82 @@
+{
+  "release": "https://github.com/aspendesign/chrome-hop/releases/tag/v1.0.0",
+  "release_workflow": "https://github.com/aspendesign/chrome-hop/actions/runs/39539792041",
+  "release_workflow_conclusion": "success",
+  "source_commit": "ab80f2c10da90f34ffa86d431ee0ed462f5bb886",
+  "anonymous_downloads_verified": true,
+  "checksum_manifest_entries_verified": 5,
+  "locally_tested_files_match_public_downloads": [
+    "chrome-hop-1.0.0-windows-x64.exe",
+    "ChromeHop-Setup-1.0.0-windows-x64.exe",
+    "chrome-hop-1.0.0-amo-submission.zip"
+  ],
+  "github_attestation_verifier": "gh attestation verify --repo aspendesign/chrome-hop",
+  "attestation_verification_exit_code": 0,
+  "verified_workflow": {
+    "path": ".github/workflows/release.yml",
+    "ref": "refs/tags/v1.0.0",
+    "repository": "https://github.com/aspendesign/chrome-hop"
+  },
+  "runner_environment": "github-hosted",
+  "attested_subjects": [
+    {
+      "name": "BUILD-INFO.json",
+      "digest": {
+        "sha256": "4445f2bcd124ac4f5b12a08165dcd541f41123c9db84f83e030464e65bfd1061"
+      }
+    },
+    {
+      "name": "chrome-hop-1.0.0-amo-submission.zip",
+      "digest": {
+        "sha256": "e4d9e258df0d224ea40b86300cb8f79d43acc3dbfd9041c470fa46405de5b5c3"
+      }
+    },
+    {
+      "name": "chrome-hop-1.0.0-listing-assets.zip",
+      "digest": {
+        "sha256": "9f80ca31ccc5a4c4178369b46b4178ac529f82c19eeaa3db953011fcb10a5416"
+      }
+    },
+    {
+      "name": "chrome-hop-1.0.0-windows-x64.exe",
+      "digest": {
+        "sha256": "297cb739fff6c72e03e95bb7bc4eead65ad2d04acc9b48f709c8007be8642c95"
+      }
+    },
+    {
+      "name": "ChromeHop-Setup-1.0.0-windows-x64.exe",
+      "digest": {
+        "sha256": "99345bc04c98cc863760997901a07c4c9029e9425a31e143499600543b69b4e6"
+      }
+    },
+    {
+      "name": "SHA256SUMS.txt",
+      "digest": {
+        "sha256": "8a0645fccff01b5e76b946e83babe3b07d4f6fc5b235ac92f011eebb7e7cb915"
+      }
+    }
+  ],
+  "amo": {
+    "addon_id": 3102983,
+    "version_id": 6602368,
+    "file_id": 5146489,
+    "distribution": "listed",
+    "status": "Awaiting Review",
+    "validation_errors": 0,
+    "validation_warnings": 0,
+    "source_uploaded": true,
+    "source_sha256": "9d0a707b28b5280ffc2ad04dc81164d06b7a7735f3a9c6dec1231dc0a40ec5f3",
+    "original_icon_uploaded": true,
+    "screenshot_ids": [
+      430945,
+      430946
+    ],
+    "public_signed_xpi_release_verified": false,
+    "public_api_http_status": 401,
+    "stored_archive_sha256": "af31d35c9a8a1cdcdad57cbf5535faf85420a7aba46723409db1e3ee471e00dd",
+    "all_non_manifest_files_byte_identical": true,
+    "manifest_json_semantically_identical": true,
+    "manifest_formatting_normalized_by_mozilla": true,
+    "stored_archive_has_mozilla_signature": false
+  }
+}

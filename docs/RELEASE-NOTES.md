@@ -5,10 +5,13 @@ Download **ChromeHop-Setup-1.0.0-windows-x64.exe** for the per-user Windows
 helper. Google Chrome Stable and the separate Firefox add-on are required.
 There is no administrator prompt, downloaded runtime, telemetry or service.
 
-**Firefox / Mozilla status:** the public/listed submission is being prepared
-through the authenticated Developer Hub. Public approval/signing is **not yet
-confirmed**. The `amo-submission.zip` is a reviewer/development
-artifact and cannot be installed in normal Firefox. Track the verified status
+**Firefox / Mozilla status:** version **1.0.0 was submitted for public/listed
+distribution** (AMO version ID 6602368) and is **Awaiting Review**. Original
+artwork, two actual screenshots, privacy policy, MIT license, reviewer notes
+and the full source package were saved. A publicly signed XPI and public
+availability remain pending Mozilla approval. The `amo-submission.zip` is a
+reviewer/development artifact and cannot be installed in normal Firefox.
+Track the verified status
 in [publication/STATUS.md](https://github.com/aspendesign/chrome-hop/blob/main/publication/STATUS.md).
 
 The add-on requests only `activeTab` and `nativeMessaging`. Mozilla’s additional

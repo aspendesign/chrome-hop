@@ -9,5 +9,5 @@
 - Per-user Windows 11 x64 installer with repair, upgrade and clean uninstall.
 - Original icons, accessible local guidance, privacy policy, threat model,
   automated tests, reproducible builds, tagged releases and SHA-256 checksums.
-- Mozilla public submission package prepared. Signing/listing approval is a
-  separate external step; see the current publication status.
+- Submitted to Mozilla for public listing as version 1.0.0 (version ID 6602368).
+  Status: Awaiting Review; public approval/signing remain an external step.

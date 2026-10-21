@@ -53,6 +53,8 @@ with no transpiler, bundler or minifier. ZIP entries have fixed timestamps,
 permissions and order. Inno Setup file entries omit input timestamps.
 The build compares two independent helper, extension and installer compilations
 and fails if bytes differ. CI builds the same tag on a fresh Windows runner.
+For 1.0.0, the fresh Windows CI artifacts and the public release downloads also
+matched the ASUS builds byte for byte.
 
 `dist/` contains the versioned installer, standalone helper, unsigned AMO
 submission ZIP, `BUILD-INFO.json`, submission assets and `SHA256SUMS.txt`.
@@ -60,8 +62,16 @@ The standalone helper does not register itself; ordinary users need the installe
 
 Checksums provide integrity, not a purchased publisher identity certificate.
 No release checksum signature is claimed unless an independently verifiable
-signature is actually attached. The project does not purchase certificates or
-create a new private signing-key system just for checksums.
+signature is actually verified. Version 1.0.0 has verified GitHub/Sigstore build
+attestations covering the binaries, ZIPs, metadata and checksum file. Verify:
+
+```powershell
+gh attestation verify .\SHA256SUMS.txt --repo aspendesign/chrome-hop
+gh attestation verify .\ChromeHop-Setup-1.0.0-windows-x64.exe --repo aspendesign/chrome-hop
+```
+
+These attest the tagged GitHub build; they are separate from Windows
+Authenticode signing. No certificate or private signing-key service was bought.
 
 ## GitHub releases
 
@@ -81,8 +91,11 @@ The `Submit listed Firefox add-on` workflow is manual and separate from ordinary
 pushes and GitHub publication. It downloads the exact release submission ZIP,
 checks its SHA-256, and uses `--channel listed`. It needs existing authorized
 AMO API credentials in `AMO_API_KEY` and `AMO_API_SECRET`, preferably stored in
-the `mozilla-production` environment with required reviewers. No credentials
-are in this repository. Without those secrets it fails before submission.
+the `mozilla-production` environment, which is configured with owner review
+and a main-branch rule. No credentials are in this repository or were exported
+in this run. Without those secrets the optional API workflow fails before
+submission. The 1.0.0 listed submission was completed through the existing
+authenticated browser session and is awaiting Mozilla review.
 
 The same package may be submitted through the authenticated AMO Developer Hub.
 The listing text, privacy policy, original icon, screenshots and reviewer notes

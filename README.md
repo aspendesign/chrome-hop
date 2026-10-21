@@ -9,11 +9,12 @@ stays open. No preferences to configure, website scripts, tracking or services.
 **[Download the Windows helper](https://github.com/aspendesign/chrome-hop/releases/latest)**
 · **[Installation](docs/INSTALL.md)** · **[Privacy](docs/PRIVACY.md)** · **[Troubleshooting](docs/TROUBLESHOOTING.md)**
 
-> **Firefox distribution status:** the extension package is prepared for a
-> **public/listed Mozilla Add-ons submission** through the authenticated Developer
-> Hub. Submission is in progress; public approval/signing is not yet confirmed. The unsigned ZIP
-> is a reviewer/development artifact, not an installable public Firefox release.
-> See [publication status](publication/STATUS.md) for the verified state.
+> **Firefox distribution status, verified October 20, 2026:** version **1.0.0**
+> was submitted for **public/listed** Mozilla distribution and is **Awaiting Review**.
+> The original icon, two actual screenshots, privacy policy, MIT license, reviewer
+> notes and full source package are saved. Public approval and a signed XPI remain
+> pending. The submission ZIP is a reviewer/development artifact, not an installable
+> public Firefox release. See [publication status](publication/STATUS.md).
 
 ## Get started
 
