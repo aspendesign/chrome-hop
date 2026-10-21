@@ -24,22 +24,17 @@ def download(url, path, expected):
     return actual
 
 if __name__ == '__main__':
-    releases = get_json('https://go.dev/dl/?mode=json&include=all')
-    release = next(x for x in releases if x['version']=='go1.27.3')
-    asset = next(x for x in release['files'] if x['filename']=='go1.27.3.windows-amd64.zip')
-    archive = TOOLS / asset['filename']
+    # Pins were checked against official Go metadata and the official GitHub
+    # Inno release. Direct asset URLs avoid shared-runner API rate limits.
+    archive = TOOLS / 'go1.27.3.windows-amd64.zip'
     expected_go='f26081f438319757f8a1b46d7d0b2c5ec7583d4038e485e0aa725cfde7885fff'
-    if asset['sha256']!=expected_go:raise RuntimeError('Official Go metadata changed')
-    go_hash = download('https://go.dev/dl/'+asset['filename'], archive, expected_go)
+    go_hash = download('https://go.dev/dl/go1.27.3.windows-amd64.zip', archive, expected_go)
     if not (TOOLS/'go/bin/go.exe').exists():
         with zipfile.ZipFile(archive) as z: z.extractall(TOOLS)
     print(run([TOOLS/'go/bin/go.exe','version']).stdout.decode().strip())
-    release = get_json('https://api.github.com/repos/jrsoftware/issrc/releases/tags/is-7_1_0')
-    asset = next(x for x in release['assets'] if x['name']=='innosetup-7.1.0-x64.exe')
-    expected = asset.get('digest','').removeprefix('sha256:')
-    if expected!='0362a383ed217d4c4239b5933866dd96d3eb2102737da92f80f6057a4b40df2f': raise RuntimeError('Official Inno Setup asset checksum changed')
-    setup = TOOLS / asset['name']
-    inno_hash = download(asset['browser_download_url'], setup, expected)
+    expected='0362a383ed217d4c4239b5933866dd96d3eb2102737da92f80f6057a4b40df2f'
+    setup = TOOLS / 'innosetup-7.1.0-x64.exe'
+    inno_hash = download('https://github.com/jrsoftware/issrc/releases/download/is-7_1_0/innosetup-7.1.0-x64.exe', setup, expected)
     target = TOOLS/'inno'
     if not (target/'ISCC.exe').exists():
         run([setup,'/VERYSILENT','/SUPPRESSMSGBOXES','/NORESTART','/CURRENTUSER','/SP-', '/DIR='+str(target)], timeout=180)

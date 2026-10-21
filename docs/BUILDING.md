@@ -9,7 +9,7 @@ to regenerate already-committed original icons; it is not part of the build.
 
 `python scripts/bootstrap.py` downloads the exact official Go and Inno Setup
 versions to `.tools/`, checks their SHA-256 against constants committed in the
-script and official release metadata, and installs Inno Setup per-user there.
+script (verified against official release metadata), and installs Inno Setup per-user there.
 No tool is downloaded or executed by the product installer.
 
 ```powershell
@@ -73,7 +73,7 @@ action pinned to a full commit. No self-hosted runner or paid service is used.
 
 Update the manifest/package version, changelog and release notes; test and commit.
 Push `vX.Y.Z` after reviewing the source. The workflow rejects a mismatched tag.
-Do not retag an existing release. Use a new version for a correction.
+Do not retag a published release. Use a new version for a correction.
 
 ## Mozilla public submission
 
