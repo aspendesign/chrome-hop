@@ -13,12 +13,11 @@ Chrome, in order. Unsupported pages are skipped and Firefox tabs stay open.
 · **[View releases on GitHub](https://github.com/aspendesign/chrome-hop/releases/latest)**
 · **[Installation](docs/INSTALL.md)** · **[Privacy](docs/PRIVACY.md)**
 
-> **Firefox distribution status, verified October 20, 2026:** version **1.0.0**
-> was submitted for **public/listed** Mozilla distribution and is **Awaiting Review**.
-> The original icon, two actual screenshots, privacy policy, MIT license, reviewer
-> notes and full source package are saved. Public approval and a signed XPI remain
-> pending. The submission ZIP is a reviewer/development artifact, not an installable
-> public Firefox release. See [publication status](publication/STATUS.md).
+> **Distribution status, verified October 21, 2026:** **1.1.0 is public on GitHub**.
+> Mozilla’s 1.1.0 upload passed validation but still needs its final submission
+> click; the initial 1.0.0 submission is awaiting review. A public signed Firefox
+> XPI remains pending. The submission ZIP is a reviewer/development artifact.
+> See [publication status](publication/STATUS.md).
 
 ## Get started
 

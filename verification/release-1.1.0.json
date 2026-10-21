@@ -1,0 +1,27 @@
+{
+  "version": "1.1.0",
+  "release_url": "https://github.com/aspendesign/chrome-hop/releases/tag/v1.1.0",
+  "published_at": "2026-10-21T04:55:38Z",
+  "source_commit": "a909247caf6488a1ccd7b8265f89e1b9fb475fc5",
+  "release_workflow": "https://github.com/aspendesign/chrome-hop/actions/runs/39546456333",
+  "ci_workflow": "https://github.com/aspendesign/chrome-hop/actions/runs/39546450269",
+  "public_asset_sha256": {
+    "BUILD-INFO.json": "fac9797dcb69060a9f9438a7c61843a5b35665415c59fa37e84f8f0b15222350",
+    "chrome-hop-1.1.0-amo-submission.zip": "c395ca64b13179d9f91d95997e0bbb1d01dbdeb9227efbc101900d8252c70e3d",
+    "chrome-hop-1.1.0-listing-assets.zip": "be9012a99ff9937114b3dbf478ddff3db890a7fc7a70701477cc1f8fb3a08783",
+    "chrome-hop-1.1.0-windows-x64.exe": "297cb739fff6c72e03e95bb7bc4eead65ad2d04acc9b48f709c8007be8642c95",
+    "ChromeHop-Setup-1.1.0-windows-x64.exe": "1be46c0da0c4c45bf109def12a23efbf9216a7fb1880f5d5f770e503b5416f30",
+    "ChromeHop-Setup-windows-x64.exe": "1be46c0da0c4c45bf109def12a23efbf9216a7fb1880f5d5f770e503b5416f30",
+    "SHA256SUMS.txt": "ed537c73d29912cd402a281d8f5ee620f3042f0c976075212ec53ec98a479e96"
+  },
+  "all_asset_checksums_verified": true,
+  "production_downloads_match_local_builds": true,
+  "stable_latest_download_verified": true,
+  "installer_and_checksum_attestations_verified": true,
+  "amo_version_id": 6602520,
+  "amo_status": "validated draft; final submission interrupted by browser-tool connection loss",
+  "amo_validation": {
+    "errors": 0,
+    "warnings": 0
+  }
+}

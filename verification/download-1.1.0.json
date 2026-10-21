@@ -1,0 +1,14 @@
+{
+  "version": "1.1.0",
+  "success": true,
+  "profile": "disposable",
+  "checks": [
+    "first_install_direct_download_and_separate_github",
+    "hashchange_regression_in_actual_firefox",
+    "narrow_layout_without_horizontal_overflow",
+    "actual_firefox_button_download_matches_released_installer",
+    "actual_toolbar_reuses_help_tab_and_updates_message"
+  ],
+  "firefox_version": "159.0",
+  "download_sha256": "1be46c0da0c4c45bf109def12a23efbf9216a7fb1880f5d5f770e503b5416f30"
+}

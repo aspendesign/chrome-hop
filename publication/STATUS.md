@@ -6,8 +6,29 @@ Version 1.1.0 includes direct downloads and adds **Open all tabs in this window*
 to the toolbar’s right-click menu. Left-click still opens only the current tab.
 `menus` is required for the context menu, and `tabs` is optional and requested
 only for that explicit bulk action. Native helper code/security is unchanged.
-Local unit and real Firefox/Chrome verification passed; tagged release and
-Mozilla submission details will be recorded here after completion.
+**GitHub release: [1.1.0 is public](https://github.com/aspendesign/chrome-hop/releases/tag/v1.1.0).**
+The [release workflow](https://github.com/aspendesign/chrome-hop/actions/runs/39546456333)
+and [Windows CI](https://github.com/aspendesign/chrome-hop/actions/runs/39546450269)
+passed at source `a909247caf6488a1ccd7b8265f89e1b9fb475fc5`.
+All seven assets were downloaded anonymously and verified against SHA-256.
+The helper, extension, versioned installer and stable Setup alias match the
+ASUS-tested builds byte for byte. GitHub attestations for the Setup alias and
+checksum file were verified. Actual Firefox clicked the packaged Download
+button and downloaded the exact public installer.
+
+**Mozilla 1.1.0: uploaded and validated, final submission unfinished.**
+The listed update reached version **6602520**, with **0 errors / 0 warnings**.
+Browser control disconnected on the Describe Version step before the release
+notes/reviewer notes were entered or **Submit Version** was clicked. This is
+a validated draft, not a completed submission or a public signed add-on.
+The original 1.0.0 submission remains awaiting review; no 1.0.1 Mozilla version
+was submitted. [Finish the draft](https://addons.mozilla.org/en-US/developers/addon/chrome-hop-open-in-chrome/versions/submit/6602520/details)
+with the text in [FINISH-1.1.0.md](FINISH-1.1.0.md). No API credentials were
+created/exported; the protected optional API workflow has no configured AMO secrets.
+
+Evidence: [browser tests](../verification/BULK-1.1.0.md),
+[release hashes](../verification/release-1.1.0.json),
+[actual button download](../verification/download-1.1.0.json).
 
 ## 1.0.1 setup improvement
 
@@ -18,8 +39,10 @@ The [download link](https://github.com/aspendesign/chrome-hop/releases/latest/do
 uses a stable Setup filename; its bytes match the versioned installer and it
 is included in checksums and build attestations.
 
-The update is prepared and locally tested. Its tagged public release and AMO
-update submission will be recorded here after their actual completion.
+The [1.0.1 GitHub release](https://github.com/aspendesign/chrome-hop/releases/tag/v1.0.1)
+was published by [the passing workflow](https://github.com/aspendesign/chrome-hop/actions/runs/39545589623).
+It is superseded by 1.1.0 above. Its Mozilla upload was replaced with 1.1.0
+before creating a version, so no separate 1.0.1 AMO submission is claimed.
 
 ## 1.0.0 verified release and initial submission
 

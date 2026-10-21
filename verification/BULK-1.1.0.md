@@ -25,7 +25,12 @@
   reproduce byte for byte. The stable Setup alias matches the versioned installer.
 
 The raw [browser receipt](bulk-1.1.0.json) contains only test paths and status.
-Release/AMO publication and the post-release button download are recorded in
-[publication status](../publication/STATUS.md) after verification.
+The public 1.1.0 release passed Windows CI, installer lifecycle tests, Go tests,
+vet/fuzzing, vulnerability checks, reproducibility and provenance verification.
+All seven public asset hashes passed. After publication, the actual Firefox
+setup button downloaded the exact released Setup executable; see the
+[download receipt](download-1.1.0.json). The Mozilla upload passed validation
+but browser control disconnected before its final submission. See
+[publication status](../publication/STATUS.md) for that remaining step.
 
 ![Actual packaged setup page](setup-1.1.0.png)
